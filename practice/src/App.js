@@ -2,7 +2,6 @@ import "./styles.css";
 import React from "react"
 import { useState } from "react";
 
-
 function App()
 {
 
@@ -51,6 +50,12 @@ function App()
 
   const [score, setScore] = useState(0)
 
+  const handleResetClick = () => {
+    setCurrentQuestion(0)
+    setShowScore(false)
+    setScore(0) 
+  }
+
   const handleAnswerButtonclick = (isCorrect) => {
     if(isCorrect === true)
     {
@@ -73,7 +78,10 @@ function App()
 			{/* HINT: replace "false" with logic to display the 
       score when the user has answered all the questions */}
 			{showScore ? (
-				<div className='score-section'>You scored {score} out of {questions.length}</div>
+				<div className='score-section'>You scored {score} out of {questions.length}
+         <button onClick={handleResetClick} className="reset">Reset</button>
+        </div>
+        
 			) : (
 				<>
 					<div className='question-section'>
